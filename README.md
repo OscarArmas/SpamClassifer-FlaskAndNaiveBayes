@@ -11,4 +11,4 @@ pip install -r requirements.txt
 python spam_class.py
 ```
 ### Preview:
-
+![](preview.png)
