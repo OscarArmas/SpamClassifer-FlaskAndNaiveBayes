@@ -1,0 +1,237 @@
+<!doctype html>
+<title>Is Spam?</title>
+<style>
+  * {
+    box-sizing: border-box; 
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+  }
+  .col-1 {
+    background: #D7E8D4;
+    flex: 1;
+  }
+  .col-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+  }
+  .content > article {
+    flex: 4;
+    min-height: 60vh;
+  }
+  header, footer {
+    background: #556A80;
+    height: 20vh;
+  }
+  header, footer, article, nav {
+    padding: 1em;
+  }
+</style>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+</style>
+<body style="background-color: #F8FCFE;">
+
+  <div class="col-2">
+  	<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <script src="{{ url_for('static', filename='form.js') }}"></script>
+</head>
+    <main class="content">
+    <div class="container">
+      <h1>Very Simple Spam Classifier!</h1>
+      <p>Using Naive Bayes</p>
+  <br><br><br><br>
+  <form class="form-group">
+            <p>
+          <label>Text Area</label>
+      <textarea class="form-control" name="comments" id="comments" style="width:1131px;height:302px;background-color:#C1E8FB;color:#898A8B;border:none;padding:2%;font:22px/30px sans-serif;" placeholder="Try to writte an spamm mesage or copy paste some example below">
+      </textarea>
+        </p>
+    <button type="submit" class="btn btn-default" style="background-color:yellowgreen;color:white;padding:5px;font-size:18px;border:none;padding:8px;">Validate</button>
+  </form>
+  
+  <br>
+  <div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+  <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+</div>
+    </main>
+    <div class="container">
+      <h2>Try these Examples!</h2>
+<p>They are not part of training</p>
+      <div class="row">
+  <div class="column">
+    <div class="card">
+      <p>Hello, I have a special offer for you…
+WANT TO LOSE WEIGHT?
+
+The most powerful weightloss is now available
+without prescription. All natural Adipren720
+100% Money Back Guarantee!
+
+– Lose up to 19% Total Body Weight.
+– Up to 300% more Weight Loss while dieting.
+– Loss of 20-35% abdominal Fat.
+– Reduction of 40-70% overall Fat under skin.
+– Increase metabolic rate by 76.9% without Exercise.
+– Burns calorized fat.
+– Suppresses appetite for sugar.
+– Boost your Confidence level and Self Esteem.
+
+Get the facts about all-natural Adipren720: {LINK}</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <p>Rx Shopping Service Brings You our Newest Product:
+
+Your personal shopping service that legally provides
+Over the Counter (OTC) approved drugs from Canada and
+around the world.
+
+Order Valium (Diazepam) and it will be
+guaranteed Delivery within 7 DAYS!
+
+Do not miss out *Limited Quantity!
+
+Visit Here: {LINK}</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <p>Looking for not expensive high-quality software?
+We might have just what you need.
+
+Windows XP Professional 2002 …………. $50
+Adobe Photoshop 7.0 …………………. $60
+Microsoft Office XP Professional 2002 …. $60
+Corel Draw Graphics Suite 11 …………. $60
+
+and lots more…</p>
+      
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <p>Dear Ms. Smith,
+
+Thank you again for meeting with me to discuss the administrative assistant position at XYZ Corp. I thoroughly enjoyed our conversation, both about the role and about baseball. (I really think this is our year!)
+
+I was impressed with the opportunities the administrative assistant has at XYZ to pitch in and wear many hats. In my previous role, I was able to pick up graphic design and Excel skills, as well as some conversational Spanish and French. I love to learn new things and find different ways to make my team a success. It’s clear that I would have the opportunity to do that working for XYZ.</p>
+      
+    </div>
+  </div>
+    <div class="column">
+    <div class="card">
+      <p>Dear Spencer:
+
+I wanted to drop you a note to thank you for the great work you did in building and launching the redesign of our company website. Since the go-live, I’ve received several glowing comments from clients who are thrilled with the new look of our product catalogue and with the improved ease of the website’s navigation system.
+
+I also appreciate the extra time you took to train me and our business team in how to correctly enter new text and visuals into the website. None of us were familiar with web design or coding before, but your training and the manual / process checklist you wrote for us will ensure that we’ll easily be able to make changes to the website as needed.</p>
+      
+    </div>
+  </div>
+    <div class="column">
+    <div class="card">
+      <p>голосуй за Глазьева, ЦБ продался США</p>
+    </div>
+  </div>
+    <div class="column">
+    <div class="card">
+      <p>Hi Oscar:
+
+We are a startup that sell online. It looks like Amazon would be perfect for our needs. It really looks like you’ve thought of everything!
+
+We are currently in the process of seeking investment, which is a bit of an extended process. Would you be able to offer us an extended free trial of 10 months, rather than one? By that point, we should be able to upgrade to the Standard or Premium version.
+
+Thanks for considering this. By the way, I’d be happy to review the software both on sell-any-car.com and on our own blog. Let me know!
+Sincerely,
+Zayling</p>
+    </div>
+  </div>
+</div>
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <p class="white-text text-lighten-4" style="color: white">You can see some resources that help me to do this project</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text" style="color: white">Links</h5>
+                <ul>
+                  <li><a style="color: white" class="grey-text text-lighten-3" href="http://cs229.stanford.edu/notes/cs229-notes2.pdf">CS229 Lecture notes by Andrew</a></li>
+                  <li><a style="color: white" class="grey-text text-lighten-3" href="https://www.udemy.com/data-science-and-machine-learning-with-python-hands-on/">Data science and Machine Learning course by Frank Kane</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            <p style="color: white"> Oscar Armas </p>
+            <a style="color: white" class="grey-text text-lighten-4 right" href="https://github.com/OscarArmas">Github</a>
+            </div>
+          </div>
+        </footer>
+</div>
+
+  </div>
+  
+</body>
